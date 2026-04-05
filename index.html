@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Iffat 🐱💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@300;500&display=swap');
+
+        :root {
+            --rose-gold: #e5b1b1;
+            --soft-pink: #ffb7c5;
+            --deep-pink: #ff8fa3;
+            --glass: rgba(255, 255, 255, 0.08);
+            --text: #fff0f3;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            height: 100vh;
+            background: radial-gradient(circle at center, #2d1b2d 0%, #0a050a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text);
+        }
+
+        /* --- DYNAMIC CAT BACKGROUND --- */
+        #cat-bg-layer {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px) brightness(0.3);
+            z-index: -2;
+            transition: background-image 1.5s ease-in-out;
+        }
+
+        canvas#starfield {
+            position: fixed;
+            top: -5%; left: -5%; width: 110%; height: 110%;
+            z-index: -1;
+        }
+
+        /* --- MAIN ROMANTIC CARD --- */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(229, 177, 177, 0.3);
+            border-radius: 40px;
+            padding: 45px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.7);
+            position: relative;
+            animation: floatCard 5s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--rose-gold);
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(229, 177, 177, 0.4);
+        }
+
+        .dedication {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: var(--soft-pink);
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* --- STICKERS & ANIMATIONS --- */
+        .cat-sticker-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .sticker {
+            font-size: 45px;
+            filter: drop-shadow(0 0 10px var(--soft-pink));
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.15); filter: brightness(1.3); }
+        }
+
+        #message-box {
+            min-height: 150px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* --- KAMIL'S SIGNATURE --- */
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.9rem;
+            color: var(--rose-gold);
+            margin-top: 15px;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        /* --- THE BUTTON --- */
+        .draw-btn {
+            background: linear-gradient(45deg, var(--deep-pink), var(--rose-gold));
+            border: none;
+            color: #2d1b2d;
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 10px 20px rgba(255, 143, 163, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .draw-btn:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 143, 163, 0.5);
+        }
+
+        /* --- FLOATING FIREFLIES --- */
+        .firefly {
+            position: absolute;
+            width: 5px; height: 5px;
+            background: var(--rose-gold);
+            border-radius: 50%;
+            filter: blur(2px);
+            box-shadow: 0 0 10px var(--rose-gold);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cat-bg-layer"></div>
+    <canvas id="starfield"></canvas>
+
+    <div class="card" id="main-card">
+        <div class="cat-sticker-row">
+            <span class="sticker">😻</span>
+            <span class="sticker" style="animation-delay: 0.5s">💝</span>
+            <span class="sticker" style="animation-delay: 1s">🐈</span>
+        </div>
+
+        <h1>My Beautiful Iffat,</h1>
+        <div class="dedication">From Kamil's Heart to Yours</div>
+        
+        <div id="message-box">
+            My dearest Iffat... <br> 
+            Every star in the sky is a reason I love you. <br> 
+            Click below to read a note from my heart.
+        </div>
+
+        <span class="signature">With all my love, Kamil 🤍</span>
+        
+        <button class="draw-btn" onclick="nextLoveNote()">REVEAL A NOTE 🐾</button>
+    </div>
+
+    <script>
+        // --- 1. PERSONAL ROMANTIC MESSAGES ---
+        const messages = [
+            "Iffat, you are the music in my silence and the light in my darkest days. I'm so proud to be your Kamil.",
+            "I love you more than all the cats in the world combined! You are my forever person, Iffat.",
+            "Just like a cat finds the warmest patch of sun, my heart always finds its way to you, Iffat.",
+            "Iffat + Kamil is the only math that makes sense to me. You are my perfect half.",
+            "Every second with you feels like a beautiful dream I never want to wake up from.",
+            "Your smile is my favorite destination. I adore you more than words can say, Iffat.",
+            "I promise to always keep you safe, happy, and loved. Forever yours, Kamil.",
+            "Iffat, you make my heart do a little happy dance every single time I see your name."
+        ];
+
+        // --- 2. THE CAT API (Fetches cute GIFs) ---
+        function getNewCatGif() {
+            fetch('https://api.thecatapi.com/v1/images/search?mime_types=gif')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('cat-bg-layer').style.backgroundImage = `url(${data[0].url})`;
+                });
+        }
+
+        // --- 3. REVEAL LOGIC & HEART BURST ---
+        function nextLoveNote() {
+            const box = document.getElementById('message-box');
+            box.style.opacity = '0';
+            box.style.filter = 'blur(10px)';
+            
+            getNewCatGif(); // Background changes on click!
+
+            setTimeout(() => {
+                const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+                box.innerHTML = `"${randomMsg}"`;
+                box.style.opacity = '1';
+                box.style.filter = 'blur(0px)';
+                spawnHeartParticles();
+            }, 700);
+        }
+
+        // --- 4. STARFIELD PARALLAX ---
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function initStars() {
+            canvas.width = window.innerWidth * 1.1;
+            canvas.height = window.innerHeight * 1.1;
+            for(let i=0; i<250; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2,
+                    opacity: Math.random()
+                });
+            }
+        }
+
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "white";
+            stars.forEach(s => {
+                ctx.globalAlpha = s.opacity;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.size, 0, Math.PI*2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animateStars);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth/2) * 0.015;
+            const moveY = (e.clientY - window.innerHeight/2) * 0.015;
+            canvas.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            
+            // Tilt the card
+            const tiltX = (window.innerHeight/2 - e.clientY) * 0.01;
+            const tiltY = (e.clientX - window.innerWidth/2) * 0.01;
+            document.getElementById('main-card').style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+        });
+
+        // --- 5. HEART BURST EFFECT ---
+        function spawnHeartParticles() {
+            for(let i=0; i<12; i++) {
+                const h = document.createElement('div');
+                h.innerHTML = ['❤️','💖','🐾','🐱'][Math.floor(Math.random()*4)];
+                h.style.position = 'fixed';
+                h.style.left = '50%';
+                h.style.top = '50%';
+                h.style.fontSize = '24px';
+                h.style.pointerEvents = 'none';
+                h.style.zIndex = '100';
+                document.body.appendChild(h);
+
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 150 + 100;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+
+                h.animate([
+                    { transform: 'translate(-50%, -50%) scale(0.5)', opacity: 1 },
+                    { transform: `translate(calc(-50% + ${vx}px), calc(-50% + ${vy}px)) scale(1.5)`, opacity: 0 }
+                ], { duration: 1200, easing: 'ease-out' });
+
+                setTimeout(() => h.remove(), 1200);
+            }
+        }
+
+        // --- 6. FIREFLIES ---
+        function createFirefly() {
+            const f = document.createElement('div');
+            f.className = 'firefly';
+            document.body.appendChild(f);
+            
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+            f.style.left = x + 'px';
+            f.style.top = y + 'px';
+
+            function move() {
+                x += (Math.random() - 0.5) * 50;
+                y += (Math.random() - 0.5) * 50;
+                f.style.transition = 'all 3s ease-in-out';
+                f.style.left = x + 'px';
+                f.style.top = y + 'px';
+                f.style.opacity = Math.random();
+                setTimeout(move, 3000);
+            }
+            move();
+        }
+
+        window.onload = () => {
+            initStars();
+            animateStars();
+            getNewCatGif();
+            for(let i=0; i<8; i++) createFirefly();
+        };
+    </script>
+</body>
+</html>
