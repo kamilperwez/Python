@@ -26,7 +26,7 @@
             color: #fff;
         }
 
-        /* --- ROMANTIC TOP BAR --- */
+        /* --- FIXED TOP BAR --- */
         .top-bar {
             position: fixed;
             top: 0;
@@ -39,35 +39,39 @@
             color: var(--rose-gold);
             text-shadow: 0 0 15px rgba(255, 143, 163, 0.9);
             letter-spacing: 2px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+            /* CRITICAL FIX: Allows clicking through the text to buttons below */
+            pointer-events: none; 
         }
 
-        /* --- STRETCHED FULL-SCREEN BACKGROUND GIF --- */
+        /* --- FULL STRETCH BACKGROUND (NO CROP) --- */
         #bg-gif {
             position: fixed; 
             top: 0; left: 0; 
-            width: 100vw; 
-            height: 100vh;
-            object-fit: cover; /* STRETCHED TO COVER WHOLE SCREEN */
+            width: 100%; height: 100%;
+            /* 'fill' stretches the GIF to match the screen exactly */
+            object-fit: fill; 
             z-index: -2;
             filter: brightness(0.9);
             transition: opacity 1s ease; opacity: 0;
         }
 
-        /* --- ULTRA-TRANSPARENT CARD --- */
+        /* --- TRANSPARENT CARD --- */
         .card {
             background: transparent;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 40px;
-            padding: 30px;
+            padding: 25px;
             width: 90%;
             max-width: 400px;
             text-align: center;
             position: relative;
             z-index: 10;
             animation: float 6s infinite ease-in-out;
+            /* Ensure card stays below top-bar but still clickable */
+            margin-top: 40px; 
         }
 
         @keyframes float {
@@ -85,7 +89,7 @@
         .tab-btn {
             padding: 12px; cursor: pointer; border-radius: 20px;
             font-size: 0.85rem; font-weight: 700; color: #fff;
-            background: rgba(0, 0, 0, 0.3); 
+            background: rgba(0, 0, 0, 0.4); 
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: 0.3s;
         }
@@ -106,7 +110,7 @@
             font-style: italic; 
             margin: 15px 0;
             color: #fff;
-            text-shadow: 2px 2px 10px rgba(0,0,0,1), 0 0 5px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 10px rgba(0,0,0,1);
         }
         
         .kamil-sig { font-family: 'Dancing Script', cursive; color: var(--rose-gold); font-size: 1.8rem; display: block; margin-bottom: 20px; text-shadow: 2px 2px 5px #000; }
